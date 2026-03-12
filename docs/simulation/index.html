@@ -49,7 +49,7 @@
 
     <section class="section sim-section">
       <div class="shell sim-workspace">
-        <aside class="sim-sidebar">
+        <form class="sim-sidebar" id="sim-config-form">
           <article class="card sim-card">
             <div class="sim-card-head">
               <h2>Modelo</h2>
@@ -59,7 +59,7 @@
             <div class="form-stack">
               <label class="field">
                 <span class="field-label">Cinética</span>
-                <select>
+                <select name="kinetics">
                   <option>Monod</option>
                   <option>Haldane</option>
                   <option>Inhibición por producto</option>
@@ -68,7 +68,7 @@
 
               <label class="field">
                 <span class="field-label">Estrategia de control</span>
-                <select>
+                <select name="controlStrategy">
                   <option>Sin control</option>
                   <option>Manipular D</option>
                   <option>Manipular S_r</option>
@@ -78,7 +78,7 @@
 
               <label class="field">
                 <span class="field-label">Preset</span>
-                <select>
+                <select name="preset">
                   <option>Introducción</option>
                   <option>Washout</option>
                   <option>Multiplicidad</option>
@@ -97,32 +97,32 @@
             <div class="field-grid">
               <label class="field">
                 <span class="field-label">μmax</span>
-                <input type="number" value="0.5" step="0.01">
+                <input type="number" name="muMax" value="0.5" step="0.01">
               </label>
 
               <label class="field">
                 <span class="field-label">Ks</span>
-                <input type="number" value="0.1" step="0.01">
+                <input type="number" name="ks" value="0.1" step="0.01">
               </label>
 
               <label class="field">
                 <span class="field-label">D</span>
-                <input type="number" value="0.2" step="0.01">
+                <input type="number" name="dilution" value="0.2" step="0.01">
               </label>
 
               <label class="field">
                 <span class="field-label">S_r</span>
-                <input type="number" value="20" step="0.1">
+                <input type="number" name="sr" value="20" step="0.1">
               </label>
 
               <label class="field">
                 <span class="field-label">Yx/s</span>
-                <input type="number" value="0.5" step="0.01">
+                <input type="number" name="yxs" value="0.5" step="0.01">
               </label>
 
               <label class="field">
                 <span class="field-label">Ki / Pmax</span>
-                <input type="number" value="10" step="0.1">
+                <input type="number" name="inhibitionParam" value="10" step="0.1">
               </label>
             </div>
           </article>
@@ -136,22 +136,22 @@
             <div class="field-grid">
               <label class="field">
                 <span class="field-label">X₀</span>
-                <input type="number" value="0.2" step="0.01">
+                <input type="number" name="x0" value="0.2" step="0.01">
               </label>
 
               <label class="field">
                 <span class="field-label">S₀</span>
-                <input type="number" value="2" step="0.1">
+                <input type="number" name="s0" value="2" step="0.1">
               </label>
 
               <label class="field">
                 <span class="field-label">P₀</span>
-                <input type="number" value="0" step="0.1">
+                <input type="number" name="p0" value="0" step="0.1">
               </label>
 
               <label class="field">
                 <span class="field-label">Tiempo final</span>
-                <input type="number" value="80" step="1">
+                <input type="number" name="tFinal" value="80" step="1">
               </label>
             </div>
           </article>
@@ -163,8 +163,8 @@
             </div>
 
             <div class="button-row sim-button-row">
-              <button class="button" type="button">Simular</button>
-              <button class="button button-secondary" type="button">Restablecer</button>
+              <button class="button" id="sim-run-button" type="button">Simular</button>
+              <button class="button button-secondary" id="sim-reset-button" type="button">Restablecer</button>
             </div>
 
             <p class="muted sim-note">
@@ -172,26 +172,26 @@
               conectaremos primero la lógica de estado y después el motor Monod.
             </p>
           </article>
-        </aside>
+        </form>
 
         <section class="sim-main">
           <article class="card sim-summary-card">
             <div class="sim-summary-grid">
               <div class="sim-summary-item">
                 <span class="sim-summary-label">Modelo activo</span>
-                <strong>Monod</strong>
+                <strong data-summary="model">—</strong>
               </div>
               <div class="sim-summary-item">
                 <span class="sim-summary-label">Variable manipulada</span>
-                <strong>Ninguna</strong>
+                <strong data-summary="control">—</strong>
               </div>
               <div class="sim-summary-item">
                 <span class="sim-summary-label">Modo</span>
-                <strong>Exploración</strong>
+                <strong data-summary="mode">—</strong>
               </div>
               <div class="sim-summary-item">
                 <span class="sim-summary-label">Estado del motor</span>
-                <strong>En construcción</strong>
+                <strong data-summary="engine">—</strong>
               </div>
             </div>
           </article>
@@ -390,6 +390,8 @@
 
   <script src="../js/ui/loadPartials.js" defer></script>
   <script src="../js/ui/tabs.js" defer></script>
+  <script src="../js/state/defaults.js" defer></script>
+  <script src="../js/state/store.js" defer></script>
   <script src="../js/pages/simulation.js" defer></script>
 </body>
 </html>
