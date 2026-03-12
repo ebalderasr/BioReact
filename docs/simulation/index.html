@@ -224,29 +224,48 @@
                       <span class="sim-badge">Time series</span>
                     </div>
                     <div class="plot-placeholder">
-                      <div class="plot-placeholder-inner">
+                      <div class="plot-placeholder-inner" id="sim-preview-plot">
                         <span>Zona principal de gráfica temporal</span>
                       </div>
+                    </div>
+
+                    <div class="preview-table-wrap">
+                      <table class="preview-table">
+                        <thead>
+                          <tr>
+                            <th>Magnitud</th>
+                            <th>Valor</th>
+                            <th>Interpretación</th>
+                          </tr>
+                        </thead>
+                        <tbody id="sim-preview-table-body">
+                          <tr>
+                            <td>Estado</td>
+                            <td>—</td>
+                            <td>Presiona Simular para generar una vista previa</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
 
                   <div class="sim-side-metrics">
-                    <div class="mini-card">
-                      <span class="mini-label">μ final</span>
-                      <strong>—</strong>
-                    </div>
-                    <div class="mini-card">
-                      <span class="mini-label">X final</span>
-                      <strong>—</strong>
-                    </div>
-                    <div class="mini-card">
-                      <span class="mini-label">S final</span>
-                      <strong>—</strong>
-                    </div>
-                    <div class="mini-card">
-                      <span class="mini-label">Diagnóstico</span>
-                      <strong>Sin simulación</strong>
-                    </div>
+                  <div class="mini-card">
+                    <span class="mini-label">μ inicial</span>
+                    <strong id="metric-mu-initial">—</strong>
+                  </div>
+                  <div class="mini-card">
+                    <span class="mini-label">μ − D inicial</span>
+                    <strong id="metric-net-initial">—</strong>
+                  </div>
+                  <div class="mini-card">
+                    <span class="mini-label">Riesgo de washout</span>
+                    <strong id="metric-washout-risk">—</strong>
+                  </div>
+                  <div class="mini-card">
+                    <span class="mini-label">Diagnóstico</span>
+                    <strong id="metric-diagnosis">Sin simulación</strong>
+                  </div>
                   </div>
                 </div>
               </section>
