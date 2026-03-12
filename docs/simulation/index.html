@@ -15,39 +15,373 @@
   <div data-include="../partials/header.html"></div>
 
   <main>
-    <section class="hero">
-      <div class="shell stack-lg">
-        <p class="eyebrow">Simulation</p>
-        <h1 class="page-title">Ruta de simulación</h1>
-        <p class="page-intro">
-          Aquí vivirá el motor de BioReact. En este release queda lista la base
-          visual y estructural sobre la que iremos montando primero Monod, luego
-          Haldane, y después los distintos tipos de control.
-        </p>
+    <section class="hero sim-hero">
+      <div class="shell sim-hero-grid">
+        <div class="stack-lg">
+          <p class="eyebrow">Simulation Lab</p>
+          <h1 class="page-title">Motor de simulación</h1>
+          <p class="page-intro">
+            Esta página concentrará la exploración dinámica de BioReact. La meta es
+            comparar modelos cinéticos, condiciones iniciales y estrategias de control
+            dentro de una misma interfaz, manteniendo una lectura clara para docencia.
+          </p>
+
+          <div class="sim-pill-row">
+            <span class="sim-pill">Release 1 shell</span>
+            <span class="sim-pill">Monod → Haldane → Producto</span>
+            <span class="sim-pill">Dinámica · Estabilidad · Control</span>
+          </div>
+        </div>
+
+        <aside class="card sim-hero-card">
+          <span class="kicker">Objetivo de esta versión</span>
+          <div class="stack">
+            <h2>Base lista para crecer</h2>
+            <p>
+              En este release dejamos preparada la arquitectura visual de la página:
+              panel lateral, pestañas, tarjetas y zonas de salida. Luego iremos activando
+              el motor matemático por bloques, empezando con Monod.
+            </p>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <section class="section">
-      <div class="shell two-col">
-        <article class="card">
-          <h2>Próximo panel</h2>
-          <ul>
-            <li>Parámetros del reactor</li>
-            <li>Selección de cinética</li>
-            <li>Condiciones iniciales</li>
-            <li>Simulación temporal</li>
-          </ul>
-        </article>
+    <section class="section sim-section">
+      <div class="shell sim-workspace">
+        <aside class="sim-sidebar">
+          <article class="card sim-card">
+            <div class="sim-card-head">
+              <h2>Modelo</h2>
+              <span class="sim-badge">Config</span>
+            </div>
 
-        <article class="card">
-          <h2>Más adelante</h2>
-          <ul>
-            <li>Plano de fase</li>
-            <li>Estados estacionarios</li>
-            <li>Estabilidad local</li>
-            <li>Comparación de estrategias de control</li>
-          </ul>
-        </article>
+            <div class="form-stack">
+              <label class="field">
+                <span class="field-label">Cinética</span>
+                <select>
+                  <option>Monod</option>
+                  <option>Haldane</option>
+                  <option>Inhibición por producto</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span class="field-label">Estrategia de control</span>
+                <select>
+                  <option>Sin control</option>
+                  <option>Manipular D</option>
+                  <option>Manipular S_r</option>
+                  <option>PI</option>
+                </select>
+              </label>
+
+              <label class="field">
+                <span class="field-label">Preset</span>
+                <select>
+                  <option>Introducción</option>
+                  <option>Washout</option>
+                  <option>Multiplicidad</option>
+                  <option>Control difícil</option>
+                </select>
+              </label>
+            </div>
+          </article>
+
+          <article class="card sim-card">
+            <div class="sim-card-head">
+              <h2>Parámetros base</h2>
+              <span class="sim-badge">Reactor</span>
+            </div>
+
+            <div class="field-grid">
+              <label class="field">
+                <span class="field-label">μmax</span>
+                <input type="number" value="0.5" step="0.01">
+              </label>
+
+              <label class="field">
+                <span class="field-label">Ks</span>
+                <input type="number" value="0.1" step="0.01">
+              </label>
+
+              <label class="field">
+                <span class="field-label">D</span>
+                <input type="number" value="0.2" step="0.01">
+              </label>
+
+              <label class="field">
+                <span class="field-label">S_r</span>
+                <input type="number" value="20" step="0.1">
+              </label>
+
+              <label class="field">
+                <span class="field-label">Yx/s</span>
+                <input type="number" value="0.5" step="0.01">
+              </label>
+
+              <label class="field">
+                <span class="field-label">Ki / Pmax</span>
+                <input type="number" value="10" step="0.1">
+              </label>
+            </div>
+          </article>
+
+          <article class="card sim-card">
+            <div class="sim-card-head">
+              <h2>Condiciones iniciales</h2>
+              <span class="sim-badge">Init</span>
+            </div>
+
+            <div class="field-grid">
+              <label class="field">
+                <span class="field-label">X₀</span>
+                <input type="number" value="0.2" step="0.01">
+              </label>
+
+              <label class="field">
+                <span class="field-label">S₀</span>
+                <input type="number" value="2" step="0.1">
+              </label>
+
+              <label class="field">
+                <span class="field-label">P₀</span>
+                <input type="number" value="0" step="0.1">
+              </label>
+
+              <label class="field">
+                <span class="field-label">Tiempo final</span>
+                <input type="number" value="80" step="1">
+              </label>
+            </div>
+          </article>
+
+          <article class="card sim-card">
+            <div class="sim-card-head">
+              <h2>Acciones</h2>
+              <span class="sim-badge">Run</span>
+            </div>
+
+            <div class="button-row sim-button-row">
+              <button class="button" type="button">Simular</button>
+              <button class="button button-secondary" type="button">Restablecer</button>
+            </div>
+
+            <p class="muted sim-note">
+              Por ahora estos controles son parte del cascarón visual. En el siguiente paso
+              conectaremos primero la lógica de estado y después el motor Monod.
+            </p>
+          </article>
+        </aside>
+
+        <section class="sim-main">
+          <article class="card sim-summary-card">
+            <div class="sim-summary-grid">
+              <div class="sim-summary-item">
+                <span class="sim-summary-label">Modelo activo</span>
+                <strong>Monod</strong>
+              </div>
+              <div class="sim-summary-item">
+                <span class="sim-summary-label">Variable manipulada</span>
+                <strong>Ninguna</strong>
+              </div>
+              <div class="sim-summary-item">
+                <span class="sim-summary-label">Modo</span>
+                <strong>Exploración</strong>
+              </div>
+              <div class="sim-summary-item">
+                <span class="sim-summary-label">Estado del motor</span>
+                <strong>En construcción</strong>
+              </div>
+            </div>
+          </article>
+
+          <article class="card sim-tabs-card">
+            <div class="tablist" role="tablist" aria-label="Simulation views">
+              <button class="tab is-active" type="button" role="tab" aria-selected="true" data-tab-target="tab-dynamics">
+                Dinámica temporal
+              </button>
+              <button class="tab" type="button" role="tab" aria-selected="false" data-tab-target="tab-phase">
+                Plano de fase
+              </button>
+              <button class="tab" type="button" role="tab" aria-selected="false" data-tab-target="tab-steady">
+                Estados estacionarios
+              </button>
+              <button class="tab" type="button" role="tab" aria-selected="false" data-tab-target="tab-control">
+                Control
+              </button>
+            </div>
+
+            <div class="tab-panels">
+              <section class="tab-panel is-active" id="tab-dynamics" role="tabpanel">
+                <div class="sim-panel-grid">
+                  <div class="sim-plot-card">
+                    <div class="panel-head">
+                      <div>
+                        <p class="panel-eyebrow">Placeholder</p>
+                        <h3>Curvas X(t), S(t), P(t)</h3>
+                      </div>
+                      <span class="sim-badge">Time series</span>
+                    </div>
+                    <div class="plot-placeholder">
+                      <div class="plot-placeholder-inner">
+                        <span>Zona principal de gráfica temporal</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="sim-side-metrics">
+                    <div class="mini-card">
+                      <span class="mini-label">μ final</span>
+                      <strong>—</strong>
+                    </div>
+                    <div class="mini-card">
+                      <span class="mini-label">X final</span>
+                      <strong>—</strong>
+                    </div>
+                    <div class="mini-card">
+                      <span class="mini-label">S final</span>
+                      <strong>—</strong>
+                    </div>
+                    <div class="mini-card">
+                      <span class="mini-label">Diagnóstico</span>
+                      <strong>Sin simulación</strong>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="tab-panel" id="tab-phase" role="tabpanel" hidden>
+                <div class="sim-panel-grid sim-panel-grid-single">
+                  <div class="sim-plot-card">
+                    <div class="panel-head">
+                      <div>
+                        <p class="panel-eyebrow">Placeholder</p>
+                        <h3>Plano de fase</h3>
+                      </div>
+                      <span class="sim-badge">X vs S</span>
+                    </div>
+                    <div class="plot-placeholder">
+                      <div class="plot-placeholder-inner">
+                        <span>Zona para trayectorias, nullclines y puntos críticos</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="tab-panel" id="tab-steady" role="tabpanel" hidden>
+                <div class="stack-lg">
+                  <div class="panel-head">
+                    <div>
+                      <p class="panel-eyebrow">Placeholder</p>
+                      <h3>Estados estacionarios y estabilidad</h3>
+                    </div>
+                    <span class="sim-badge">Equilibria</span>
+                  </div>
+
+                  <div class="steady-table-wrap">
+                    <table class="steady-table">
+                      <thead>
+                        <tr>
+                          <th>Punto</th>
+                          <th>X*</th>
+                          <th>S*</th>
+                          <th>P*</th>
+                          <th>Clasificación</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>EQ1</td>
+                          <td>—</td>
+                          <td>—</td>
+                          <td>—</td>
+                          <td>Sin calcular</td>
+                        </tr>
+                        <tr>
+                          <td>EQ2</td>
+                          <td>—</td>
+                          <td>—</td>
+                          <td>—</td>
+                          <td>Sin calcular</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <p class="muted">
+                    Aquí después mostraremos estados estacionarios físicamente viables,
+                    jacobiana, eigenvalores y clasificación local.
+                  </p>
+                </div>
+              </section>
+
+              <section class="tab-panel" id="tab-control" role="tabpanel" hidden>
+                <div class="sim-panel-grid">
+                  <div class="sim-plot-card">
+                    <div class="panel-head">
+                      <div>
+                        <p class="panel-eyebrow">Placeholder</p>
+                        <h3>Respuesta con control</h3>
+                      </div>
+                      <span class="sim-badge">Setpoint</span>
+                    </div>
+                    <div class="plot-placeholder">
+                      <div class="plot-placeholder-inner">
+                        <span>Zona para comparar referencia, salida y acción de control</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="control-notes">
+                    <div class="mini-card">
+                      <span class="mini-label">Variable controlada</span>
+                      <strong>X o S</strong>
+                    </div>
+                    <div class="mini-card">
+                      <span class="mini-label">Acción manipulada</span>
+                      <strong>D / S_r</strong>
+                    </div>
+                    <div class="mini-card">
+                      <span class="mini-label">Comentario docente</span>
+                      <strong>Algunas estrategias serán difíciles o inviables</strong>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </article>
+
+          <article class="card sim-teaching-card">
+            <div class="panel-head">
+              <div>
+                <p class="panel-eyebrow">Docencia</p>
+                <h3>Qué debe poder mostrar esta página</h3>
+              </div>
+              <span class="sim-badge">Teaching goals</span>
+            </div>
+
+            <div class="two-col sim-goals-grid">
+              <div class="mini-card">
+                <span class="mini-label">1</span>
+                <strong>Cómo cambia la dinámica al pasar de Monod a Haldane</strong>
+              </div>
+              <div class="mini-card">
+                <span class="mini-label">2</span>
+                <strong>Cómo influyen las condiciones iniciales y la multiplicidad</strong>
+              </div>
+              <div class="mini-card">
+                <span class="mini-label">3</span>
+                <strong>Qué significa que un equilibrio sea estable o inestable</strong>
+              </div>
+              <div class="mini-card">
+                <span class="mini-label">4</span>
+                <strong>Por qué la variable manipulada cambia el problema de control</strong>
+              </div>
+            </div>
+          </article>
+        </section>
       </div>
     </section>
   </main>
@@ -55,5 +389,7 @@
   <div data-include="../partials/footer.html"></div>
 
   <script src="../js/ui/loadPartials.js" defer></script>
+  <script src="../js/ui/tabs.js" defer></script>
+  <script src="../js/pages/simulation.js" defer></script>
 </body>
 </html>
