@@ -1,0 +1,20 @@
+.highlight-card {
+  background:
+    linear-gradient(180deg, rgba(166, 206, 99, 0.08), rgba(255,255,255,0.02)),
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+}
+
+.highlight-list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.highlight-item {
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border);
+}
+
+.highlight-item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}

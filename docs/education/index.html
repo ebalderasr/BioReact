@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BioReact · Educación</title>
+
+  <link rel="stylesheet" href="../styles/tokens.css">
+  <link rel="stylesheet" href="../styles/base.css">
+  <link rel="stylesheet" href="../styles/layout.css">
+  <link rel="stylesheet" href="../styles/components.css">
+  <link rel="stylesheet" href="../styles/pages/education.css">
+</head>
+<body data-base-path="../">
+  <div data-include="../partials/header.html"></div>
+
+  <main>
+    <section class="hero">
+      <div class="shell stack-lg">
+        <p class="eyebrow">Education</p>
+        <h1 class="page-title">Ruta de educación</h1>
+        <p class="page-intro">
+          Aquí vivirá la parte didáctica de BioReact. La idea es guiar al alumno
+          desde el esquema físico del quimiostato y los balances de masa, hasta
+          la interpretación de estabilidad, multiplicidad de estados estacionarios
+          y control.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell card-grid">
+        <article class="card">
+          <h2>Bloque 1</h2>
+          <p>Reactor, variables de estado y balances de biomasa y sustrato.</p>
+        </article>
+
+        <article class="card">
+          <h2>Bloque 2</h2>
+          <p>Monod, crecimiento, dilución, washout y estados estacionarios.</p>
+        </article>
+
+        <article class="card">
+          <h2>Bloque 3</h2>
+          <p>Haldane, inhibición por producto y cómo cambia la interpretación del sistema.</p>
+        </article>
+      </div>
+
+      <div class="shell" style="margin-top: 1.5rem;">
+        <a class="button" href="../simulation/">Ir a Simulación</a>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="../partials/footer.html"></div>
+
+  <script src="../js/ui/loadPartials.js" defer></script>
+</body>
+</html>

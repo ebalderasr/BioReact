@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BioReact</title>
+  <meta name="description" content="Plataforma educativa y de simulación para estudiar biorreactores continuos.">
+
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/layout.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/pages/home.css">
+</head>
+<body data-base-path="./">
+  <div data-include="partials/header.html"></div>
+
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="stack-lg">
+          <p class="eyebrow">Education · Simulation · Control</p>
+          <h1 class="hero-title">BioReact</h1>
+          <p class="hero-text">
+            Plataforma educativa y de simulación para estudiar la dinámica,
+            estabilidad y control de biorreactores continuos. El proyecto está
+            pensado para avanzar desde balances de masa y cinética Monod hacia
+            casos más complejos como Haldane, inhibición por producto y estrategias
+            de control.
+          </p>
+
+          <div class="button-row">
+            <a class="button" href="education/">Ir a Educación</a>
+            <a class="button button-secondary" href="simulation/">Ir a Simulación</a>
+          </div>
+        </div>
+
+        <aside class="card highlight-card">
+          <span class="kicker">Release 1</span>
+          <div class="highlight-list">
+            <div class="highlight-item">
+              <h3>Ruta Educación</h3>
+              <p>Explicación gradual del reactor, balances, Monod y lo que vendrá después.</p>
+            </div>
+
+            <div class="highlight-item">
+              <h3>Ruta Simulación</h3>
+              <p>Espacio reservado para el motor que integrará dinámica, estabilidad y control.</p>
+            </div>
+
+            <div class="highlight-item">
+              <h3>Base modular</h3>
+              <p>Header, footer, estilos y estructura separados para hacer ajustes finos sin reescribir todo.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell card-grid">
+        <article class="card">
+          <h2>Qué enseña</h2>
+          <p>
+            Cómo pasar de balances de biomasa y sustrato a una interpretación
+            dinámica del reactor, incluyendo washout, estados estacionarios y estabilidad.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Qué simula</h2>
+          <p>
+            Trayectorias temporales, comparación de modelos cinéticos y, más adelante,
+            la respuesta del sistema ante diferentes estrategias de control.
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>Cómo crecerá</h2>
+          <p>
+            Release 1 deja lista la arquitectura base. Después iremos agregando
+            Monod, Haldane, inhibición por producto, paneles y gráficas.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="partials/footer.html"></div>
+
+  <script src="js/ui/loadPartials.js" defer></script>
+</body>
+</html>
