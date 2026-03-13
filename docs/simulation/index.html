@@ -302,16 +302,40 @@
                   <div class="sim-plot-card">
                     <div class="panel-head">
                       <div>
-                        <p class="panel-eyebrow">Placeholder</p>
+                        <p class="panel-eyebrow">Monod phase plane</p>
                         <h3>Plano de fase</h3>
                       </div>
                       <span class="sim-badge">X vs S</span>
                     </div>
+
                     <div class="plot-placeholder">
-                      <div class="plot-placeholder-inner">
-                        <span>Zona para trayectorias, nullclines y puntos críticos</span>
+                      <div class="plot-placeholder-inner" id="sim-phase-plot">
+                        <span>Ejecuta una simulación Monod para generar trayectoria y nullclines.</span>
                       </div>
                     </div>
+
+                    <div class="preview-table-wrap">
+                      <table class="preview-table">
+                        <thead>
+                          <tr>
+                            <th>Elemento</th>
+                            <th>Coordenadas</th>
+                            <th>Comentario</th>
+                          </tr>
+                        </thead>
+                        <tbody id="sim-phase-summary-body">
+                          <tr>
+                            <td>Estado</td>
+                            <td>—</td>
+                            <td>La información aparecerá cuando Monod RK4 esté activo.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+
+                    <p class="muted phase-note" id="sim-phase-note">
+                      Por ahora el plano de fase real está habilitado solo para Monod.
+                    </p>
                   </div>
                 </div>
               </section>

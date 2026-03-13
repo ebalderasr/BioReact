@@ -460,3 +460,15 @@
     align-items: start;
   }
 }
+
+.phase-note {
+  margin-top: 0.85rem;
+}
+
+.preview-point-chip {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: currentColor;
+  display: inline-block;
+}
