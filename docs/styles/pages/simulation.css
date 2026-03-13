@@ -208,6 +208,7 @@
 .sim-panel-grid {
   display: grid;
   gap: var(--space-4);
+  min-width: 0;
 }
 
 .sim-panel-grid-single {
@@ -217,23 +218,46 @@
 .sim-plot-card {
   display: grid;
   gap: var(--space-3);
+  min-width: 0;
+}
+
+.chart-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.chart-toolbar-group {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.chart-tool-button {
+  min-height: 38px;
+  padding: 0.55rem 0.9rem;
+}
+
+.chart-zoom-label {
+  font-size: 0.92rem;
 }
 
 .plot-placeholder {
-  min-height: 340px;
+  min-height: 520px;
   border-radius: var(--radius-md);
   border: 1px dashed var(--border);
   background:
     linear-gradient(180deg, rgba(166, 206, 99, 0.04), rgba(255,255,255,0.02)),
     rgba(255,255,255,0.015);
-  display: grid;
-  place-items: center;
+  display: block;
   padding: 1rem;
 }
 
 .plot-placeholder-inner {
-  width: min(100%, 720px);
-  min-height: 180px;
+  width: 100%;
+  min-height: 460px;
   border-radius: var(--radius-md);
   border: 1px solid rgba(255,255,255,0.06);
   display: grid;
@@ -241,6 +265,7 @@
   text-align: center;
   color: var(--muted);
   padding: 1rem;
+  overflow: auto;
 }
 
 .preview-chart-wrap {
@@ -258,9 +283,13 @@
   font-size: 0.9rem;
 }
 
-.preview-svg {
+.preview-svg-stage {
   width: 100%;
-  height: auto;
+  overflow: auto;
+  border-radius: 14px;
+}
+
+.preview-svg {
   display: block;
   border-radius: 14px;
   background: rgba(255,255,255,0.02);
@@ -293,12 +322,13 @@
   border: 1px solid var(--border);
   border-radius: 18px;
   margin-top: 1rem;
+  width: 100%;
 }
 
 .preview-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 560px;
+  min-width: 640px;
 }
 
 .preview-table th,
@@ -366,6 +396,15 @@
   gap: var(--space-3);
 }
 
+/* Dinámica temporal: gráfica y tablas a ancho completo, métricas abajo */
+#tab-dynamics .sim-panel-grid {
+  grid-template-columns: 1fr;
+}
+
+#tab-dynamics .sim-side-metrics {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 @media (min-width: 900px) {
   .sim-hero-grid {
     grid-template-columns: 1.3fr 0.9fr;
@@ -389,5 +428,35 @@
 
   .sim-goals-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #tab-dynamics .sim-panel-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #tab-dynamics .sim-side-metrics {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+/* Ensanchar específicamente la página de simulación */
+.sim-section .shell {
+  width: min(100% - 2rem, 1380px);
+}
+
+/* Dar más aire al área principal y reducir un poco el panel lateral */
+@media (min-width: 900px) {
+  .sim-workspace {
+    grid-template-columns: 300px minmax(0, 1fr);
+    align-items: start;
+  }
+}
+.sim-section .shell {
+  width: min(100% - 2rem, 1380px);
+}
+
+@media (min-width: 900px) {
+  .sim-workspace {
+    grid-template-columns: 300px minmax(0, 1fr);
+    align-items: start;
   }
 }

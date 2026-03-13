@@ -223,9 +223,38 @@
                       </div>
                       <span class="sim-badge">Time series</span>
                     </div>
+
+                    <div class="chart-toolbar">
+                      <div class="chart-toolbar-group">
+                        <button class="button button-secondary chart-tool-button" id="chart-zoom-out" type="button">Zoom −</button>
+                        <button class="button button-secondary chart-tool-button" id="chart-zoom-in" type="button">Zoom +</button>
+                        <button class="button button-secondary chart-tool-button" id="chart-zoom-reset" type="button">Reset zoom</button>
+                      </div>
+                      <span class="muted chart-zoom-label" id="chart-zoom-label">100%</span>
+                    </div>
+
                     <div class="plot-placeholder">
                       <div class="plot-placeholder-inner" id="sim-preview-plot">
                         <span>Zona principal de gráfica temporal</span>
+                      </div>
+                    </div>
+
+                    <div class="sim-side-metrics sim-inline-metrics">
+                      <div class="mini-card">
+                        <span class="mini-label">μ inicial</span>
+                        <strong id="metric-mu-initial">—</strong>
+                      </div>
+                      <div class="mini-card">
+                        <span class="mini-label">μ − D inicial</span>
+                        <strong id="metric-net-initial">—</strong>
+                      </div>
+                      <div class="mini-card">
+                        <span class="mini-label">Riesgo de washout</span>
+                        <strong id="metric-washout-risk">—</strong>
+                      </div>
+                      <div class="mini-card">
+                        <span class="mini-label">Diagnóstico</span>
+                        <strong id="metric-diagnosis">Sin simulación</strong>
                       </div>
                     </div>
 
@@ -247,27 +276,25 @@
                         </tbody>
                       </table>
                     </div>
-                  </div>
 
-                  <div class="sim-side-metrics">
-                  <div class="mini-card">
-                    <span class="mini-label">μ inicial</span>
-                    <strong id="metric-mu-initial">—</strong>
+                    <div class="preview-table-wrap">
+                      <table class="preview-table">
+                        <thead>
+                          <tr>
+                            <th>Tiempo (h)</th>
+                            <th>X (g/L)</th>
+                            <th>S (g/L)</th>
+                            <th>μ (h⁻¹)</th>
+                          </tr>
+                        </thead>
+                        <tbody id="sim-timepoints-table-body">
+                          <tr>
+                            <td colspan="4">La tabla temporal aparecerá cuando Monod RK4 esté activo.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
-                  <div class="mini-card">
-                    <span class="mini-label">μ − D inicial</span>
-                    <strong id="metric-net-initial">—</strong>
-                  </div>
-                  <div class="mini-card">
-                    <span class="mini-label">Riesgo de washout</span>
-                    <strong id="metric-washout-risk">—</strong>
-                  </div>
-                  <div class="mini-card">
-                    <span class="mini-label">Diagnóstico</span>
-                    <strong id="metric-diagnosis">Sin simulación</strong>
-                  </div>
-                  </div>
-                </div>
               </section>
 
               <section class="tab-panel" id="tab-phase" role="tabpanel" hidden>
@@ -411,6 +438,9 @@
   <script src="../js/ui/tabs.js" defer></script>
   <script src="../js/state/defaults.js" defer></script>
   <script src="../js/state/store.js" defer></script>
+  <script src="../js/core/kinetics/monod.js" defer></script>
+  <script src="../js/core/balances.js" defer></script>
+  <script src="../js/core/rk4.js" defer></script>
   <script src="../js/pages/simulation.js" defer></script>
 </body>
 </html>
